@@ -2,6 +2,8 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Acme } from "next/font/google";
+
 type Comment = {
   id: number;
   name: string;
@@ -17,6 +19,11 @@ const fetchCommentsFromPost = (id: string): Promise<Comment[]> => {
   });
 };
 
+const font = Acme({
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
 export default function CommentsList() {
   const [comments, setComments] = useState<Comment[]>([]);
 
@@ -31,7 +38,7 @@ export default function CommentsList() {
   }, [id]);
 
   return (
-    <ul className="flex flex-col  my-2 text-xs bg-gray-700">
+    <ul className={font.className + " flex flex-col  my-2 text-xs bg-gray-700"}>
       {comments?.map(({ id, name, email, body }) => (
         <li className="py-5 border-b px-12" key={id}>
           <h1 className="font-bold">
