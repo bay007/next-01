@@ -1,0 +1,14 @@
+.header {
+  border: 1px solid blue;
+  padding: 12px;
+}
+
+.route {
+  transition: all 0.2s ease-in-out;
+  display: block;
+}
+
+.route :hover {
+  color: greenyellow;
+  transform: scale(1.1);
+}
