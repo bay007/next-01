@@ -3,6 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Acme } from "next/font/google";
+import Image from "next/image";
 
 type Comment = {
   id: number;
@@ -22,6 +23,7 @@ const fetchCommentsFromPost = (id: string): Promise<Comment[]> => {
 const font = Acme({
   weight: ["400"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export default function CommentsList() {
@@ -42,6 +44,12 @@ export default function CommentsList() {
       {comments?.map(({ id, name, email, body }) => (
         <li className="py-5 border-b px-12" key={id}>
           <h1 className="font-bold">
+            <Image
+              alt={name}
+              width={30}
+              height={30}
+              src={`https://i.pravatar.cc/300?u=${email}`}
+            />
             {name} <span className="text-sm">({email})</span>
           </h1>
 
